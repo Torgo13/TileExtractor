@@ -2,6 +2,7 @@
 # project specific logic here.
 #
 cmake_minimum_required (VERSION 3.8)
+set( CMAKE_TOOLCHAIN_FILE "C:/Users/tdwal/source/vcpkg/scripts/buildsystems/vcpkg.cmake" )
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -17,5 +18,8 @@ add_executable (TileExtractor "TileExtractor.cpp" "TileExtractor.h")
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET TileExtractor PROPERTY CXX_STANDARD 20)
 endif()
+
+find_package(OpenCV CONFIG REQUIRED)
+target_link_libraries(TileExtractor PRIVATE ${OpenCV_LIBS})
 
 # TODO: Add tests and install targets if needed.

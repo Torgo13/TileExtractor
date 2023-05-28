@@ -4,5 +4,6 @@
 #pragma once
 
 #include <iostream>
+#include <opencv2/opencv.hpp>
 
 // TODO: Reference additional headers your program requires here.

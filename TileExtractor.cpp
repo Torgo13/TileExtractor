@@ -3,10 +3,25 @@
 
 #include "TileExtractor.h"
 
-using namespace std;
-
-int main()
+int main(int argc, char** argv)
 {
-	cout << "Hello CMake." << endl;
-	return 0;
+    /*if (argc != 2)
+    {
+        printf("usage: TileExtractor.out <Image_Path>\n");
+        return -1;
+    }*/
+
+    cv::Mat image;
+    image = cv::imread(/*argv[1]*/ "D:\\source\\repos\\Assets\\Sprites\\MT_Terrains_Lite_1.0\\MV\\Autotiles A4.png", cv::IMREAD_COLOR);
+    if (!image.data)
+    {
+        printf("No image data \n");
+        return -1;
+    }
+
+    cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE);
+    imshow("Display Image", image);
+    cv::waitKey(0);
+
+    return 0;
 }
