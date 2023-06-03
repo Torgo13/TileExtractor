@@ -453,6 +453,11 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Overlay)
     writeTile(getTile(baseTileset, baseOffset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
     writeTile(getTile(baseTileset, baseOffset, cv::Point(5, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
+    /*std::string outputPath = "D:\\source\\repos\\Assets\\Sprites\\MT_Terrains_Lite_1.0\\EXTRAS\\" + baseOffset.x;
+    outputPath += baseOffset.y;
+    outputPath += ".png";*/
+    cv::imwrite("D:\\source\\repos\\Assets\\Sprites\\MT_Terrains_Lite_1.0\\EXTRAS\\image.png", outputTileset);
+
     cv::namedWindow("Display Image", cv::WINDOW_KEEPRATIO);
     cv::imshow("Display Image", outputTileset);
     cv::waitKey(0);
