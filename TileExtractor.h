@@ -16,7 +16,6 @@ private:
     const unsigned int edgeTilesetHeight = 15;
     cv::Mat base;
     cv::Mat edge;
-    cv::Mat overlay;
     cv::Mat output;
     cv::Point baseOffset;
     cv::Point edgeOffset;

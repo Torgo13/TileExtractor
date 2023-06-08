@@ -27,22 +27,36 @@ int main(int argc, char** argv)
 
 TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
 {
-    bool grass = true;
+    bool useOverlay = false;
 
     base = Base;
-    edge = Edge;
-    overlay = Overlay;
+    if (useOverlay) {
+        edge = Overlay;
+    } else {
+        edge = Edge;
+    }
 
     // Final output image (pixels)
     cv::Mat outputTileset = cv::Mat(7 * 4 * tileSize, 7 * 4 * tileSize, CV_8UC4);
 
+    unsigned int x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+
     // Top left corner of biome tileset (tiles)
-    baseOffset = cv::Point(baseTilesetWidth * 0, baseTilesetHeight * 0);
-    edgeOffset = cv::Point(edgeTilesetWidth * 0, edgeTilesetHeight * 0);
+    baseOffset = cv::Point(baseTilesetWidth * x1, baseTilesetHeight * y1);
+    if (useOverlay) {
+        edgeOffset = cv::Point(baseTilesetWidth * x2, baseTilesetHeight * y2);
+    } else {
+        edgeOffset = cv::Point(edgeTilesetWidth * x2, edgeTilesetHeight * y2);
+    }
 
     // ROI encapsulating one biome of the tileset (pixels)
     cv::Rect baseTilesetROI = cv::Rect(baseOffset.x * tileSize, baseOffset.y * tileSize, tileSize * 3, tileSize * 3);
-    cv::Rect edgeTilesetROI = cv::Rect(edgeOffset.x * tileSize, edgeOffset.y * tileSize, edgeTilesetWidth * tileSize, edgeTilesetHeight * tileSize);
+    cv::Rect edgeTilesetROI;
+    if (useOverlay) {
+        edgeTilesetROI = cv::Rect(edgeOffset.x * tileSize, edgeOffset.y * tileSize, baseTilesetWidth * tileSize, baseTilesetHeight * tileSize);
+    } else {
+        edgeTilesetROI = cv::Rect(edgeOffset.x * tileSize, edgeOffset.y * tileSize, edgeTilesetWidth * tileSize, edgeTilesetHeight * tileSize);
+    }
 
     cv::Mat baseTileset = base(baseTilesetROI);
     cv::Mat edgeTileset = edge(edgeTilesetROI);
