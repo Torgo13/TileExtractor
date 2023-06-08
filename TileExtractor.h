@@ -20,6 +20,7 @@ private:
     cv::Point baseOffset;
     cv::Point overlayOffset;
     cv::Mat getTile(cv::Mat input, cv::Point offset, cv::Point coordinates);
+    cv::Mat getTile(cv::Mat input, cv::Point coordinates);
     void writeTile(cv::Mat input, cv::Mat& output, cv::Point offset, cv::Point coordinates);
 public:
     TileExtractor(cv::Mat Base, cv::Mat Overlay);
