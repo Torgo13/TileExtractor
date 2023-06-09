@@ -2,7 +2,7 @@
 # project specific logic here.
 #
 cmake_minimum_required (VERSION 3.8)
-set( CMAKE_TOOLCHAIN_FILE "C:/Users/tdwal/source/vcpkg/scripts/buildsystems/vcpkg.cmake" )
+#set( CMAKE_TOOLCHAIN_FILE "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/vcpkg/scripts/buildsystems/vcpkg.cmake" )
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)

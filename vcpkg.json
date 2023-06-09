@@ -1,16 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
-  "name": "lights-position-estimation-cpp",
+  "name": "tileextractor",
   "version": "0.0.1",
   "dependencies": [
     {
       "name": "opencv4",
-      "features": [ "tiff" ]
+      "features": [
+        "tiff"
+      ]
     },
     "zlib",
     "libpng",
     "pthread",
     "tiff",
     "cxxopts"
-  ]
+  ],
+  "builtin-baseline": "638b1588be3a265a9c7ad5b212cef72a1cad336a"
 }
