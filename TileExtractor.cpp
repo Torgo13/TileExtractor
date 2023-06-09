@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 
 TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
 {
-    bool useOverlay = false;
+    bool useOverlay = true;
 
     base = Base;
     if (useOverlay) {
@@ -39,7 +39,7 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     // Final output image (pixels)
     cv::Mat outputTileset = cv::Mat(7 * 4 * tileSize, 7 * 4 * tileSize, CV_8UC4);
 
-    unsigned int x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+    unsigned int x1 = 5, y1 = 2, x2 = 6, y2 = 2;
 
     // Top left corner of biome tileset (tiles)
     baseOffset = cv::Point(baseTilesetWidth * x1, baseTilesetHeight * y1);
@@ -89,63 +89,69 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
 
     u = 0, v = 0;
     writeTile(getTile(edgeTileset, cv::Point(0, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
     writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
     writeTile(getTile(edgeTileset, cv::Point(5, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
     writeTile(getTile(edgeTileset, cv::Point(0, 4)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
-    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
-    
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(0, 7)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
+
+    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
     writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
 
     writeTile(getTile(edgeTileset, cv::Point(0, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
-    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
+    writeTile(getTile(edgeTileset, cv::Point(1, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
     writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
     writeTile(getTile(edgeTileset, cv::Point(5, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
+    writeTile(getTile(edgeTileset, cv::Point(4, 4)), outputTileset, cv::Point(u, v), cv::Point(2, 1));
+    writeTile(getTile(edgeTileset, cv::Point(1, 7)), outputTileset, cv::Point(u, v), cv::Point(1, 2));
+    writeTile(getTile(edgeTileset, cv::Point(4, 7)), outputTileset, cv::Point(u, v), cv::Point(2, 2));
+
     u = 1, v = 0;
     writeTile(getTile(edgeTileset, cv::Point(0, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
-    writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
     writeTile(getTile(edgeTileset, cv::Point(0, 4)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
-    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
+    writeTile(getTile(edgeTileset, cv::Point(0, 7)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
 
     writeTile(getTile(edgeTileset, cv::Point(0, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
-    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
-    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
-    writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(1, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+
+    writeTile(getTile(edgeTileset, cv::Point(1, 7)), outputTileset, cv::Point(u, v), cv::Point(1, 2));
 
     u = 2, v = 0;
-    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
-    writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 2)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 3, v = 0;
-    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
-    writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 2)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
     u = 4, v = 0;
-    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
-    writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
     u = 5, v = 0;
-    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
-    writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
@@ -155,16 +161,17 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
     writeTile(getTile(edgeTileset, cv::Point(5, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
-    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
-    writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 2)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
+    writeTile(getTile(edgeTileset, cv::Point(4, 4)), outputTileset, cv::Point(u, v), cv::Point(2, 1));
 
     u = 0, v = 1;
     writeTile(getTile(edgeTileset, cv::Point(0, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
     writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
     writeTile(getTile(edgeTileset, cv::Point(5, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
@@ -175,6 +182,8 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
     writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
     writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+
+    writeTile(getTile(edgeTileset, cv::Point(4, 4)), outputTileset, cv::Point(u, v), cv::Point(2, 1));
 
     u = 1, v = 1;
     writeTile(getTile(edgeTileset, cv::Point(0, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
@@ -199,21 +208,21 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
 
     u = 5, v = 1;
     writeTile(getTile(edgeTileset, cv::Point(5, 0)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
-    
+
     u = 6, v = 1;
-    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
-    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
-    writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 0)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
 
 
     u = 0, v = 2;
-    writeTile(getTile(edgeTileset, cv::Point(0, 4)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
-    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
-    writeTile(getTile(edgeTileset, cv::Point(0, 7)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(5, 0)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
@@ -236,19 +245,19 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 6, v = 2;
-    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
-    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
-    writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 2)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
 
     u = 0, v = 3;
-    writeTile(getTile(edgeTileset, cv::Point(0, 4)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
-    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
-    writeTile(getTile(edgeTileset, cv::Point(0, 7)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(5, 0)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
@@ -261,10 +270,10 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 3, v = 3;
-    writeTile(getTile(edgeTileset, cv::Point(1, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
-    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
-    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
-    writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 4, v = 3;
     writeTile(getTile(edgeTileset, cv::Point(3, 2)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
@@ -276,28 +285,28 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 6, v = 3;
-    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
-    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
-    writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 0)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
     writeTile(getTile(edgeTileset, cv::Point(3, 2)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
 
     u = 0, v = 4;
-    writeTile(getTile(edgeTileset, cv::Point(0, 4)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
-    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
-    writeTile(getTile(edgeTileset, cv::Point(0, 7)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
     u = 1, v = 4;
 
     u = 2, v = 4;
-    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
-    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
-    writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 3, v = 4;
     writeTile(getTile(edgeTileset, cv::Point(0, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
@@ -323,16 +332,18 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
 
     writeTile(getTile(edgeTileset, cv::Point(3, 0)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
 
-    u = 5, v = 4;
-    writeTile(getTile(edgeTileset, cv::Point(0, 4)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
-    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
-    writeTile(getTile(edgeTileset, cv::Point(0, 7)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(4, 7)), outputTileset, cv::Point(u, v), cv::Point(2, 2));
 
-    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
-    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
-    writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    u = 5, v = 4;
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
+    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 6, v = 4;
     writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
@@ -348,12 +359,15 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
     writeTile(getTile(edgeTileset, cv::Point(5, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
+    writeTile(getTile(edgeTileset, cv::Point(1, 7)), outputTileset, cv::Point(u, v), cv::Point(1, 2));
+    writeTile(getTile(edgeTileset, cv::Point(4, 7)), outputTileset, cv::Point(u, v), cv::Point(2, 2));
+
 
     u = 0, v = 5;
-    writeTile(getTile(edgeTileset, cv::Point(0, 4)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
-    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
-    writeTile(getTile(edgeTileset, cv::Point(0, 7)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 1));
+    writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 2));
+    writeTile(getTile(edgeTileset, cv::Point(0, 6)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
@@ -371,15 +385,15 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(5, 2)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 4, v = 5;
-    writeTile(getTile(edgeTileset, cv::Point(1, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
-    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
-    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
-    writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(1, 0));
+    writeTile(getTile(edgeTileset, cv::Point(2, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
+    writeTile(getTile(edgeTileset, cv::Point(3, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
-    writeTile(getTile(edgeTileset, cv::Point(1, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
-    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
-    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
-    writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     u = 5, v = 5;
     writeTile(getTile(edgeTileset, cv::Point(3, 0)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
@@ -396,6 +410,8 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
     writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
+    writeTile(getTile(edgeTileset, cv::Point(4, 4)), outputTileset, cv::Point(u, v), cv::Point(2, 1));
+
 
     u = 0, v = 6;
     writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
@@ -409,27 +425,29 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
 
     writeTile(getTile(edgeTileset, cv::Point(5, 0)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
+    writeTile(getTile(edgeTileset, cv::Point(1, 7)), outputTileset, cv::Point(u, v), cv::Point(1, 2));
+
     u = 1, v = 6;
-    writeTile(getTile(edgeTileset, cv::Point(1, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
-    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
-    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
-    writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 0)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
 
     u = 2, v = 6;
-    writeTile(getTile(edgeTileset, cv::Point(1, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
-    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
-    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
-    writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(5, 0)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
     u = 3, v = 6;
-    writeTile(getTile(edgeTileset, cv::Point(1, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
-    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
-    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
-    writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
+    writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
+    writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
     writeTile(getTile(edgeTileset, cv::Point(3, 0)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
     writeTile(getTile(edgeTileset, cv::Point(5, 0)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
@@ -440,13 +458,16 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(4, 3)), outputTileset, cv::Point(u, v), cv::Point(2, 0));
     writeTile(getTile(edgeTileset, cv::Point(5, 3)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
 
-    writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
+    writeTile(getTile(edgeTileset, cv::Point(5, 4)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
     writeTile(getTile(edgeTileset, cv::Point(5, 7)), outputTileset, cv::Point(u, v), cv::Point(3, 2));
 
     writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(0, 3));
     writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
     writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
     writeTile(getTile(edgeTileset, cv::Point(5, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+
+    writeTile(getTile(edgeTileset, cv::Point(4, 4)), outputTileset, cv::Point(u, v), cv::Point(2, 1));
+    writeTile(getTile(edgeTileset, cv::Point(4, 7)), outputTileset, cv::Point(u, v), cv::Point(2, 2));
 
     u = 5, v = 6;
     writeTile(getTile(edgeTileset, cv::Point(0, 5)), outputTileset, cv::Point(u, v), cv::Point(0, 0));
@@ -458,6 +479,8 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(2, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
     writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
 
+    writeTile(getTile(edgeTileset, cv::Point(1, 7)), outputTileset, cv::Point(u, v), cv::Point(1, 2));
+
     u = 6, v = 6;
     writeTile(getTile(edgeTileset, cv::Point(5, 5)), outputTileset, cv::Point(u, v), cv::Point(3, 0));
     writeTile(getTile(edgeTileset, cv::Point(5, 6)), outputTileset, cv::Point(u, v), cv::Point(3, 1));
@@ -467,6 +490,8 @@ TileExtractor::TileExtractor(cv::Mat Base, cv::Mat Edge, cv::Mat Overlay)
     writeTile(getTile(edgeTileset, cv::Point(3, 8)), outputTileset, cv::Point(u, v), cv::Point(1, 3));
     writeTile(getTile(edgeTileset, cv::Point(4, 8)), outputTileset, cv::Point(u, v), cv::Point(2, 3));
     writeTile(getTile(edgeTileset, cv::Point(5, 8)), outputTileset, cv::Point(u, v), cv::Point(3, 3));
+
+    writeTile(getTile(edgeTileset, cv::Point(4, 7)), outputTileset, cv::Point(u, v), cv::Point(2, 2));
 
     /*std::string outputPath = "D:\\source\\repos\\Assets\\Sprites\\MT_Terrains_Lite_1.0\\EXTRAS\\" + baseOffset.x;
     outputPath += baseOffset.y;
